@@ -11,7 +11,7 @@ const Reviewlist = () => {
 
   // create state variables and set the initial values as the data passed from Home component
   const [cartItems, setCartItems] = useState(items ||[]);
-  const [cartQuantities, setCartQuantities] = useState(quantities || {});
+  const [cartQuantities, setCartQuantities] = useState( {});
 
   // function to remove an item from cart
   const handleRemoveItem = (itemId) => {
