@@ -3,16 +3,15 @@ import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 
 const Reviewlist = () => {
-  const { state } = useLocation();
 
-  // Accessing the "ab" and "cd" variables from the state object
-  const quantity = state.quantity;
-  const items = state.product; 
-  console.log("Hello",quantity,items);
+  const items=JSON.parse(localStorage.getItem('selectedProducts')) || []
+
+  console.log(items);
+
 
   // create state variables and set the initial values as the data passed from Home component
-  const [cartItems, setCartItems] = useState( []);
-  const [cartQuantities, setCartQuantities] = useState(quantity || {});
+  const [cartItems, setCartItems] = useState(items ||[]);
+  const [cartQuantities, setCartQuantities] = useState(quantities || {});
 
   // function to remove an item from cart
   const handleRemoveItem = (itemId) => {
@@ -42,6 +41,19 @@ const Reviewlist = () => {
               </div>
             ))}
           </div>
+          {/* <div className="col-md-3 row">
+            <div className="col-md-12">
+              <h3>Cart Summary</h3>
+            </div>
+            <div className="col-md-12">
+            <p>Quantity: {Object.values(cartQuantities).reduce((a, b) => a + b)}</p>
+            </div>
+            <div className="col-md-12">
+              <p>Name:  {items.name}</p>
+              
+
+            </div>
+          </div> */}
         </div>
       </div>
       <footer className="footer">
@@ -51,6 +63,8 @@ const Reviewlist = () => {
       </footer>
     </div>
   );
+  
+  
 }
 
 export default Reviewlist;

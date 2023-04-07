@@ -9,6 +9,14 @@ import { createRoot } from 'react-dom';
 const rootElement = document.getElementById('root');
 
 createRoot(rootElement).render(<App />);
+fetch('/api/products')
+  .then(response => response.json())
+  .then(data => {
+    // process the data from the backend
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 
 

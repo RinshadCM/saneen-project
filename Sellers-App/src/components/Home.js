@@ -96,14 +96,14 @@ const HomePage = () => {
     }
 
     console.log("in new selected items", newSelectedItem);
-    const quantities = newSelectedItem.quantity;
     const prodname = newSelectedItem;
-    console.log(quantities, prodname);
-    navigate(
-      '/Reviewlist',
-      {
-        state: { quantity: quantities, product: prodname }
-      });
+
+    const existingProducts = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+  
+    const updatedProducts = [...existingProducts, prodname];
+  
+    localStorage.setItem('selectedProducts', JSON.stringify(updatedProducts));
+
   };
 
   const handleSearchTermChange = (event) => {
@@ -185,7 +185,7 @@ const HomePage = () => {
 
               <Link
                 className='btn-review-list'
-                onClick={() => handleSaveButtonClick(navigate)}
+                // onClick={() => handleSaveButtonClick(navigate)}
                 to="/Reviewlist"
               >
                 Go to Reviewlist
